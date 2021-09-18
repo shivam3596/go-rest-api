@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/go-redis/redis"
 	"github.com/gorilla/mux"
@@ -110,8 +111,9 @@ func sendMessageInQueue(body string) {
 }
 
 func main() {
+	port := os.Getenv("PORT")
 	redisClient = InitRedis()
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/create-person", createPerson).Methods("POST")
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(port, router))
 }
