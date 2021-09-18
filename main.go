@@ -115,5 +115,5 @@ func main() {
 	redisClient = InitRedis()
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/create-person", createPerson).Methods("POST")
-	log.Fatal(http.ListenAndServe(port, router))
+	log.Fatal(http.ListenAndServe(":"+port, router))
 }
