@@ -1,1 +1,1 @@
-web: go-rest-api
+web: bin/go-rest-api
