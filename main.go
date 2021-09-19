@@ -23,7 +23,7 @@ var QUEUE_NAME = "hello"
 var REDIS_HOST = "redis-13910.c264.ap-south-1-1.ec2.cloud.redislabs.com:13910"
 var REDIS_PASSWORD = "6XkvmDVxtZz2ChMsKRLLtp4ZYrW3XpwQ"
 var REDIS_DB = 0
-var AMPQ_HOST = "amqps://umgtghjv:ilO7cGhzGKowX5uKUFRFC7CLy8G1G3nQ@puffin.rmq2.cloudamqp.com/umgtghjv"
+var AMQP_HOST = "amqps://umgtghjv:ilO7cGhzGKowX5uKUFRFC7CLy8G1G3nQ@puffin.rmq2.cloudamqp.com/umgtghjv"
 
 /*
 	Created redis connection
@@ -77,7 +77,7 @@ func failOnError(err error, msg string) {
 
 func sendMessageInQueue(body string) {
 	//Rabbitmq connection
-	conn, err := amqp.Dial(AMPQ_HOST)
+	conn, err := amqp.Dial(AMQP_HOST)
 	failOnError(err, "Failed to connect to RabbitMQ")
 	defer conn.Close()
 
